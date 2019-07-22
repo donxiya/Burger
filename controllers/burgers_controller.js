@@ -1,8 +1,8 @@
 const express = require("express");
-const app = express.app(); 
+const router = express.app(); 
 const burger = require("../models/burger_model.js");
 
-app.get("/", function(req, res) {
+router.get("/", function(req, res) {
     console.log("Route Hit");
     burger.selectAll((data) => {
       handlebarsObject = {
@@ -16,7 +16,7 @@ app.get("/", function(req, res) {
 
 //Post routes
 
-app.post("/api/burger", function(req, res) {
+router.post("/api/burger", function(req, res) {
   console.log("Route Hit");
   burger.insertOne(["burger_name","devoured"], [req.body["burger_name"], req.body.devoured], (result)=>{
     // Send back the ID of the new quote
@@ -25,7 +25,7 @@ app.post("/api/burger", function(req, res) {
   });
 });
 
-app.put("/api/burger/:id", function(req, res) {
+router.put("/api/burger/:id", function(req, res) {
 
   let burgerID = req.params.id
   let condition = "id = " + burgerID ;
@@ -39,4 +39,4 @@ app.put("/api/burger/:id", function(req, res) {
   });
 });
 
-module.exports = app;
+module.exports = router;
