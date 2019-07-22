@@ -2,7 +2,7 @@
 const express = require("express");
 //const bodyParser = require("body-parser"); 
 
-let PORT = process.env.PORT || 3300; 
+let PORT = process.env.PORT || 3306; 
 var router = express();
 const burger = require("../models/burger_model.js");
 
