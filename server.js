@@ -1,13 +1,14 @@
 //require
 const express = require("express");
-const bodyParser = require("body-parser"); 
+//const bodyParser = require("body-parser"); 
 const exphbs = require("express-handlebars"); 
 
 //server 
 const app = express(); 
 let PORT = process.env.PORT || 3300; 
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.static("public")); 
+app.use(express.json()); 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
