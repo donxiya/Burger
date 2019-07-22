@@ -11,7 +11,7 @@ app.get("/", function(req, res) {
       console.log("Diplayed Burgers");
       res.render("index", handlebarsObject);
     });
-    res.json(path.join(__dirname, "public/index.html"));
+    
 });
 
 //Post routes
