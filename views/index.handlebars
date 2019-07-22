@@ -1,0 +1,38 @@
+<div id ="head">
+  <h2>Burger</h2>
+</div>
+
+<div id="mid">
+
+  <div class="left">
+    <div class="uneaten">
+      {{#each burger}}
+        {{#unless devoured}}
+          {{> burgers/burgerBlock devoured=1}}
+        {{/unless}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="center">
+      <input id="burgerName" type="text" placeholder="Burger" data-eaten="0">
+      <button id="addBurger" type="button">Add Your Burger</button>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="eaten">
+      {{#each burger}}
+        {{#if devoured}}
+          {{> burgers/burgerBlock devoured=0}}
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+
+</div>
+
+<div id ="footer">
+  <p>footer</p>
+</div>

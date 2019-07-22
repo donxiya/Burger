@@ -5,7 +5,7 @@ const exphbs = require("express-handlebars");
 
 //server 
 const app = express(); 
-let PORT = process.env.PORT || 9080; 
+let PORT = process.env.PORT || 3300; 
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(express.static("public")); 
 
@@ -14,7 +14,7 @@ app.set("view engine", "handlebars");
 
 
 
-const routes = require("./controllers/burgersController.js");
+const routes = require("./controllers/burgers_controller.js");
 app.use("/", routes);
 
 //listen to server
