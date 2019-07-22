@@ -15,7 +15,7 @@ app.set("view engine", "handlebars");
 
 
 
-const routes = require("./controllers/burgers_controller.js");
+const routes = require("./controllers/burgersController.js/index.js");
 app.use("/", routes);
 
 //listen to server
