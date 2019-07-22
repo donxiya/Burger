@@ -1,9 +1,9 @@
 const express = require("express");
-const router = express.Router(); 
+const app = express.app(); 
 const burger = require("../models/burger_model.js");
 
-router.get("/", function(req, res) {
-    console.log("Route Path Hit");
+app.get("/", function(req, res) {
+    console.log("Route Hit");
     burger.selectAll((data) => {
       handlebarsObject = {
         burger: data
@@ -11,13 +11,13 @@ router.get("/", function(req, res) {
       console.log("Diplayed Burgers");
       res.render("index", handlebarsObject);
     });
-
+    res.json(path.join(__dirname, "public/index.html"));
 });
 
 //Post routes
 
-router.post("/api/burger", function(req, res) {
-  console.log("burger Route Hit");
+app.post("/api/burger", function(req, res) {
+  console.log("Route Hit");
   burger.insertOne(["burger_name","devoured"], [req.body["burger_name"], req.body.devoured], (result)=>{
     // Send back the ID of the new quote
     console.log(result);
@@ -25,13 +25,13 @@ router.post("/api/burger", function(req, res) {
   });
 });
 
-router.put("/api/burger/:id", function(req, res) {
+app.put("/api/burger/:id", function(req, res) {
 
   let burgerID = req.params.id
   let condition = "id = " + burgerID ;
 
-  console.log("burger Route Hit. ID is "+ burgerID);
-  console.log("Dev is " + req.body.devoured);
+  console.log("Route Hit. ID "+ burgerID);
+  console.log("Devour is " + req.body.devoured);
 
   burger.updateOne(["devoured"], [req.body.devoured], condition, (result)=>{
     console.log("1st callBack");
@@ -39,4 +39,4 @@ router.put("/api/burger/:id", function(req, res) {
   });
 });
 
-module.exports = router;
+module.exports = app;
