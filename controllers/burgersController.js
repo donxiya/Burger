@@ -1,5 +1,9 @@
+//require
 const express = require("express");
-var router = express.app();
+//const bodyParser = require("body-parser"); 
+
+let PORT = process.env.PORT || 3300; 
+var router = express();
 const burger = require("../models/burger_model.js");
 
 router.get("/", function (req, res) {
